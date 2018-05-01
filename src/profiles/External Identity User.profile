@@ -1517,6 +1517,9 @@
         <layout>Cat__c-猫レイアウト</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>CollaborationGroup-グループレイアウト</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Contact-Contact Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
