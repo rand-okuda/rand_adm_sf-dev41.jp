@@ -68,6 +68,8 @@
     <label>Interested People</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Cat_Breed__c</columns>
         <filterScope>Everything</filterScope>
         <label>すべて選択</label>
     </listViews>

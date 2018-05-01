@@ -11,6 +11,7 @@
     <tab>Cat__c</tab>
     <tab>Interested_Person__c</tab>
     <tab>Einstein_Vision</tab>
+    <tab>standard-Feed</tab>
     <uiType>Lightning</uiType>
     <utilityBar>UtilityBar</utilityBar>
 </CustomApplication>
