@@ -56,4 +56,8 @@
         <name>Cat_Rescue</name>
         <type>CustomApplication</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>Einstein_Demo</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
 </AppMenu>
