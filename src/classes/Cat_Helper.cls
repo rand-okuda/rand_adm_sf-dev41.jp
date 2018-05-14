@@ -23,6 +23,7 @@ public class Cat_Helper {
         cat.ExampleLabelId__c = String.valueOf(feedbackResult.label.Id);
         cat.ExampleNum__c = feedbackResult.label.numExamples;
         
+        cat.Feedback__c = false;
         update cat;
 
         System.debug('*** cat.ExampleCreatedAt__c ' + cat.ExampleCreatedAt__c);
