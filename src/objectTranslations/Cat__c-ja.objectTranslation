@@ -9,6 +9,30 @@
         <name>Cat_Breed__c</name>
     </fields>
     <fields>
+        <label><!-- ExampleCreatedAt --></label>
+        <name>ExampleCreatedAt__c</name>
+    </fields>
+    <fields>
+        <label><!-- ExampleDatasetId --></label>
+        <name>ExampleDatasetId__c</name>
+    </fields>
+    <fields>
+        <label><!-- ExampleId --></label>
+        <name>ExampleId__c</name>
+    </fields>
+    <fields>
+        <label><!-- ExampleLabelId --></label>
+        <name>ExampleLabelId__c</name>
+    </fields>
+    <fields>
+        <label><!-- ExampleLabelName --></label>
+        <name>ExampleLabelName__c</name>
+    </fields>
+    <fields>
+        <label><!-- ExampleNum --></label>
+        <name>ExampleNum__c</name>
+    </fields>
+    <fields>
         <label><!-- Feedback --></label>
         <name>Feedback__c</name>
     </fields>
@@ -61,6 +85,10 @@
         <sections>
             <label><!-- Einstein vision --></label>
             <section>Einstein vision</section>
+        </sections>
+        <sections>
+            <label><!-- Feedback --></label>
+            <section>Feedback</section>
         </sections>
         <sections>
             <label><!-- カスタムリンク --></label>
