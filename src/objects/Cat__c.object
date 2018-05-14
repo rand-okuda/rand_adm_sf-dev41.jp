@@ -274,6 +274,9 @@
         <columns>NAME</columns>
         <columns>Cat_Breed__c</columns>
         <columns>modelId__c</columns>
+        <columns>Feedback__c</columns>
+        <columns>ExampleNum__c</columns>
+        <columns>ExampleCreatedAt__c</columns>
         <filterScope>Everything</filterScope>
         <label>すべて選択</label>
     </listViews>
