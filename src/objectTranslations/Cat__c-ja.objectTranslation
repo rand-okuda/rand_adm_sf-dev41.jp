@@ -8,4 +8,63 @@
         <label><!-- Cat Breed --></label>
         <name>Cat_Breed__c</name>
     </fields>
+    <fields>
+        <label><!-- Feedback --></label>
+        <name>Feedback__c</name>
+    </fields>
+    <fields>
+        <label><!-- Probability01 --></label>
+        <name>Probability01__c</name>
+    </fields>
+    <fields>
+        <label><!-- Probability02 --></label>
+        <name>Probability02__c</name>
+    </fields>
+    <fields>
+        <label><!-- Probability03 --></label>
+        <name>Probability03__c</name>
+    </fields>
+    <fields>
+        <label><!-- Probability04 --></label>
+        <name>Probability04__c</name>
+    </fields>
+    <fields>
+        <label><!-- Probability05 --></label>
+        <name>Probability05__c</name>
+    </fields>
+    <fields>
+        <label><!-- label01 --></label>
+        <name>label01__c</name>
+    </fields>
+    <fields>
+        <label><!-- label02 --></label>
+        <name>label02__c</name>
+    </fields>
+    <fields>
+        <label><!-- label03 --></label>
+        <name>label03__c</name>
+    </fields>
+    <fields>
+        <label><!-- label04 --></label>
+        <name>label04__c</name>
+    </fields>
+    <fields>
+        <label><!-- label05 --></label>
+        <name>label05__c</name>
+    </fields>
+    <fields>
+        <label><!-- modelId --></label>
+        <name>modelId__c</name>
+    </fields>
+    <layouts>
+        <layout>猫レイアウト</layout>
+        <sections>
+            <label><!-- Einstein vision --></label>
+            <section>Einstein vision</section>
+        </sections>
+        <sections>
+            <label><!-- カスタムリンク --></label>
+            <section>カスタムリンク</section>
+        </sections>
+    </layouts>
 </CustomObjectTranslation>
