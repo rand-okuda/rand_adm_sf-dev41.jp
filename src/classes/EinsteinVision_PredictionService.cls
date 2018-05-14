@@ -23,7 +23,7 @@ public class EinsteinVision_PredictionService {
 * 
 */
     public EinsteinVision_PredictionService() {
-        System.debug('@@@ EinsteinVision_PredictionService()');
+        System.debug('### EinsteinVision_PredictionService()');
         this.bearerToken = getAccessToken();
     }
     
@@ -36,7 +36,7 @@ public class EinsteinVision_PredictionService {
 * A valid Bearer token
 */
     public EinsteinVision_PredictionService(String bearerToken) {
-        System.debug('@@@ EinsteinVision_PredictionService()');
+        System.debug('### EinsteinVision_PredictionService()');
         this.bearerToken = bearerToken;
     }
     
@@ -50,7 +50,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_Dataset createDataset(String name, String[] labels) {
-        System.debug('@@@ createDataset()');
+        System.debug('### createDataset()');
         System.debug('Starting createDataset call with name ' + name);
         EinsteinVision_HttpBodyPartDataset parts = new EinsteinVision_HttpBodyPartDataset(name, labels);
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, DATASETS, parts.build());
@@ -65,7 +65,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_Dataset dataset = (EinsteinVision_Dataset)client.getParser().readValueAs(EinsteinVision_Dataset.class);
             System.debug('New Dataset with id ' + dataset.id + ' has been created.');
-            System.debug('***dataset ' + dataset);
+            System.debug('+++ dataset ' + dataset);
             return dataset;
         }
         return null;
@@ -79,7 +79,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_Dataset createDatasetFromUrlAsync(String url) {
-        System.debug('@@@ createDatasetFromUrlAsync()');
+        System.debug('### createDatasetFromUrlAsync()');
         System.debug('Starting createDatasetFromUrlAsync call from URL ' + url);
         EinsteinVision_HttpBodyPartDatasetUrl parts = new EinsteinVision_HttpBodyPartDatasetUrl(url);
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, DATASETS + '/upload', parts.build());
@@ -95,7 +95,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_Dataset dataset = (EinsteinVision_Dataset)client.getParser().readValueAs(EinsteinVision_Dataset.class);
             System.debug('New dataset with id ' + dataset.id + ' has been created.');
-            System.debug('***dataset ' + dataset);
+            System.debug('+++ dataset ' + dataset);
             return dataset;
         }
         return null;
@@ -109,7 +109,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_Dataset createDatasetFromUrlSync(String url) {
-        System.debug('@@@ createDatasetFromUrlSync()');
+        System.debug('### createDatasetFromUrlSync()');
         System.debug('Starting createDatasetFromUrlSync call from URL ' + url);
         EinsteinVision_HttpBodyPartDatasetUrl parts = new EinsteinVision_HttpBodyPartDatasetUrl(url);
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, DATASETS + '/upload/sync', parts.build());
@@ -125,7 +125,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_Dataset dataset = (EinsteinVision_Dataset)client.getParser().readValueAs(EinsteinVision_Dataset.class);
             System.debug('New dataset with id ' + dataset.id + ' has been created.');
-            System.debug('***dataset ' + dataset);
+            System.debug('+++ dataset ' + dataset);
             return dataset;
         }
         return null;
@@ -139,7 +139,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_Dataset getDataset(Long id) {
-        System.debug('@@@ getDataset()');
+        System.debug('### getDataset()');
         if (id==0) {
             throw new EinsteinVision_NoValuesException('datasetId');
         }
@@ -156,7 +156,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_Dataset dataset = (EinsteinVision_Dataset)client.getParser().readValueAs(EinsteinVision_Dataset.class);
             System.debug('Dataset has been read.');
-            System.debug('***dataset ' + dataset);
+            System.debug('+++ dataset ' + dataset);
             return dataset;
         }
         return null;
@@ -168,7 +168,7 @@ public class EinsteinVision_PredictionService {
 * An array of all EinsteinVision_Datasets
 */
     public EinsteinVision_Dataset[] getDatasets() {
-        System.debug('@@@ getDatasets()');
+        System.debug('### getDatasets()');
         System.debug('Starting getDatasets call');
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, DATASETS);
         System.debug('Target URL is ' + client.getUrl());
@@ -182,7 +182,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_Dataset[] datasets = (EinsteinVision_Dataset[])client.getParser().readValueAs(EinsteinVision_Dataset[].class);
             System.debug('Datasets have been read.');
-            System.debug('***datasets ' + datasets);
+            System.debug('+++ datasets ' + datasets);
             return datasets;
         }
         return null;
@@ -196,7 +196,7 @@ public class EinsteinVision_PredictionService {
 * True if the deletion was successful.
 */
     public boolean deleteDataset(EinsteinVision_Dataset dataset) {
-        System.debug('@@@ deleteDataset()');
+        System.debug('### deleteDataset()');
         return deleteDataset(dataset.id);
     }
     
@@ -208,7 +208,7 @@ public class EinsteinVision_PredictionService {
 * True if the deletion was successful.
 */
     public boolean deleteDataset(Long id) {
-        System.debug('@@@ deleteDataset()');
+        System.debug('### deleteDataset()');
         System.debug('Starting deleteDataset call');
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, DATASETS + '/' + id);
         client.isDelete(true);
@@ -237,7 +237,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_Label createLabel(Long datasetId, String name) {
-        System.debug('@@@ createLabel()');
+        System.debug('### createLabel()');
         System.debug('Starting createLabel call with name ' + name);
         EinsteinVision_HttpBodyPartLabel parts = new EinsteinVision_HttpBodyPartLabel(name);
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, DATASETS + '/' + datasetId + LABELS, parts.build());
@@ -252,7 +252,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_Label label = (EinsteinVision_Label)client.getParser().readValueAs(EinsteinVision_Label.class); 
             System.debug('Label ' + name + ' has been created.');
-            System.debug('***label ' + label);
+            System.debug('+++ label ' + label);
             return label;
         }
         return null;
@@ -268,7 +268,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_Label getLabel(Long datasetId, Integer id) {
-        System.debug('@@@ getLabel()');
+        System.debug('### getLabel()');
         System.debug('Starting getLabel call with id ' + id);
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, DATASETS + '/' + datasetId + LABELS + '/' + id);
         System.debug('Target URL is ' + client.getUrl());
@@ -282,7 +282,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_Label label = (EinsteinVision_Label)client.getParser().readValueAs(EinsteinVision_Label.class); 
             System.debug('Label ' + id + ' has been read.');
-            System.debug('***label ' + label);
+            System.debug('+++ label ' + label);
             return label;
         }
         return null;
@@ -300,7 +300,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_Example createExample(Long datasetId, String name, Long labelId, Blob fileBlob) {
-        System.debug('@@@ createExample()');
+        System.debug('### createExample()');
         System.debug('Starting createExample call from blob');
         EinsteinVision_HttpBodyPartExample parts = new EinsteinVision_HttpBodyPartExample(name, labelId, EncodingUtil.base64Encode(fileBlob));
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, DATASETS + '/' + datasetId + EXAMPLES, parts.build());
@@ -316,7 +316,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_Example example = (EinsteinVision_Example)client.getParser().readValueAs(EinsteinVision_Example.class);
             System.debug('New example with id ' + example.id + ' has been created.');
-            System.debug('***example ' + example);
+            System.debug('+++ example ' + example);
             return example;
         }
         return null;
@@ -332,7 +332,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_Dataset createExamplesFromUrl(Long datasetId, String url) {
-        System.debug('@@@ createExamplesFromUrl()');
+        System.debug('### createExamplesFromUrl()');
         System.debug('Starting createExamplesFromUrl call from URL ' + url);
         EinsteinVision_HttpBodyPartDatasetUrl parts = new EinsteinVision_HttpBodyPartDatasetUrl(url);
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, DATASETS + '/' + datasetId + '/upload', parts.build());
@@ -348,7 +348,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_Dataset dataset = (EinsteinVision_Dataset)client.getParser().readValueAs(EinsteinVision_Dataset.class);
             System.debug('New examples for dataset with id ' + dataset.id + ' have been created.');
-            System.debug('***dataset ' + dataset);
+            System.debug('+++ dataset ' + dataset);
             return dataset;
         }
         return null;
@@ -364,7 +364,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_Example getExample(Long datasetId, Long id) {
-        System.debug('@@@ getExample()');
+        System.debug('### getExample()');
         System.debug('Starting getExample call with id ' + id);
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, DATASETS + '/' + datasetId + EXAMPLES + '/' + id);
         System.debug('Target URL is ' + client.getUrl());
@@ -378,7 +378,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_Example example = (EinsteinVision_Example)client.getParser().readValueAs(EinsteinVision_Example.class);
             System.debug('Example ' + id + ' has been read.');
-            System.debug('***example ' + example);
+            System.debug('+++ example ' + example);
             return example;
         }
         return null;
@@ -392,7 +392,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_Example[] getExamples(EinsteinVision_Dataset dataset) {
-        System.debug('@@@ getExamples()');
+        System.debug('### getExamples()');
         return getExamples(dataset.id);
     }
     
@@ -404,7 +404,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_Example[] getExamples(Long datasetId) {
-        System.debug('@@@ getExamples()');
+        System.debug('### getExamples()');
         System.debug('Starting getExamples call');
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, DATASETS + '/' + datasetId + EXAMPLES);
         System.debug('Target URL is ' + client.getUrl());
@@ -418,7 +418,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_Example[] examples = (EinsteinVision_Example[])client.getParser().readValueAs(EinsteinVision_Example[].class);
             System.debug('Examples have been read.');
-            System.debug('***examples ' + examples);
+            System.debug('+++ examples ' + examples);
             return examples;
         }
         return null;
@@ -432,7 +432,7 @@ public class EinsteinVision_PredictionService {
 * True if the deletion was successful.
 */
     public boolean deleteExample(EinsteinVision_Example example) {
-        System.debug('@@@ deleteExample()');
+        System.debug('### deleteExample()');
         return deleteExample(example.label.datasetId, example.id);
     }
     
@@ -446,7 +446,7 @@ public class EinsteinVision_PredictionService {
 * True if the deletion was successful.
 */
     public boolean deleteExample(Long datasetId, Long id) {
-        System.debug('@@@ deleteExample()');
+        System.debug('### deleteExample()');
         System.debug('Starting deleteExample call');
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, DATASETS + '/' + datasetId + EXAMPLES + '/' + id);
         client.isDelete(true);
@@ -479,7 +479,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_Model trainDataset(EinsteinVision_Dataset dataset, String name, Integer epochs, Decimal learningRate, String trainParams) {
-        System.debug('@@@ trainDataset()');
+        System.debug('### trainDataset()');
         return trainDataset(dataset.id, name, epochs, learningRate, trainParams);
     }
     
@@ -495,7 +495,7 @@ public class EinsteinVision_PredictionService {
 * Optional. The learning rate, valid values are betweed 0.0001 and 0.01. Set to 0 if you want to use the default.
 */
     public EinsteinVision_Model trainDataset(Long datasetId, String name, Integer epochs, Decimal learningRate, String trainParams) {
-        System.debug('@@@ trainDataset()');
+        System.debug('### trainDataset()');
         EinsteinVision_Dataset dataset = getDataset(datasetId);
         if (dataset != null) {
             if (dataset.totalExamples>0) {
@@ -513,7 +513,7 @@ public class EinsteinVision_PredictionService {
                 } else {
                     EinsteinVision_Model model = (EinsteinVision_Model)client.getParser().readValueAs(EinsteinVision_Model.class);
                     System.debug('New Model with id ' + model.modelId + ' has been created.');
-                    System.debug('***model ' + model);
+                    System.debug('+++ model ' + model);
                     return model;
                 }
             } else {
@@ -531,7 +531,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_Model getModel(String modelId) {
-        System.debug('@@@ getModel()');
+        System.debug('### getModel()');
         System.debug('Starting getModel call with parameter ' + modelId);
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, TRAIN + '/' + modelId);
         System.debug('Target URL is ' + client.getUrl());
@@ -545,7 +545,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_Model model = (EinsteinVision_Model)client.getParser().readValueAs(EinsteinVision_Model.class);
             System.debug('Model status has been read.');
-            System.debug('***model ' + model);
+            System.debug('+++ model ' + model);
             return model;
         }
         return null;
@@ -559,7 +559,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_ModelLearningCurve[] getModelLearningCurve(String modelMetricsId) {
-        System.debug('@@@ getModelLearningCurve()');
+        System.debug('### getModelLearningCurve()');
         System.debug('Starting getModelLearningCurve call with parameter ' + modelMetricsId);
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, BASE_URL + MODELS + '/' + modelMetricsId + '/lc');
         System.debug('Target URL is ' + client.getUrl());
@@ -573,7 +573,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_ModelLearningCurve[] modelLearningCurve = (EinsteinVision_ModelLearningCurve[])client.getParser().readValueAs(EinsteinVision_ModelLearningCurve[].class);
             System.debug('ModelLearningCurve has been read.');
-            System.debug('***modelLearningCurve ' + modelLearningCurve);
+            System.debug('+++ modelLearningCurve ' + modelLearningCurve);
             return modelLearningCurve;
         }
         return null;
@@ -587,7 +587,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_ModelMetrics getModelMetrics(String modelMetricsId) {
-        System.debug('@@@ getModelMetrics()');
+        System.debug('### getModelMetrics()');
         System.debug('Starting getModelMetrics call with parameter ' + modelMetricsId);
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, BASE_URL + MODELS + '/' + modelMetricsId);
         System.debug('Target URL is ' + client.getUrl());
@@ -601,7 +601,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_ModelMetrics modelMetrics = (EinsteinVision_ModelMetrics)client.getParser().readValueAs(EinsteinVision_ModelMetrics.class);
             System.debug('ModelMetrics have been read.');
-            System.debug('***modelMetrics ' + modelMetrics);
+            System.debug('+++ modelMetrics ' + modelMetrics);
             return modelMetrics;
         }
         return null;
@@ -615,7 +615,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_Model[] getModels(EinsteinVision_Dataset dataset) {
-        System.debug('@@@ getModels()');
+        System.debug('### getModels()');
         return getModels(dataset.id);
     }
     
@@ -627,7 +627,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_Model[] getModels(Long datasetId) {
-        System.debug('@@@ getModels()');
+        System.debug('### getModels()');
         System.debug('Starting getModels call');
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, DATASETS + '/' + datasetId + '/models');
         System.debug('Target URL is ' + client.getUrl());
@@ -641,7 +641,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_Model[] models = (EinsteinVision_Model[])client.getParser().readValueAs(EinsteinVision_Model[].class);
             System.debug('Models have been read.');
-            System.debug('***models ' + models);
+            System.debug('+++ models ' + models);
             return models;
         }
         return null;
@@ -660,7 +660,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_PredictionResult predictBase64(EinsteinVision_Model model, String base64, String sampleId) {
-        System.debug('@@@ predictBase64()');
+        System.debug('### predictBase64()');
         return predictBase64(model.modelId, base64, sampleId);
     }
     
@@ -676,7 +676,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_PredictionResult predictBase64(String modelId, String base64, String sampleId) {
-        System.debug('@@@ predictBase64()');
+        System.debug('### predictBase64()');
         System.debug('Starting predict call with model ' + modelId + ' for base64');
         EinsteinVision_HttpBodyPartPrediction parts = new EinsteinVision_HttpBodyPartPrediction(modelId, base64, sampleId, EinsteinVision_HttpBodyPartPrediction.Types.BASE64);
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, PREDICT, parts.build());
@@ -691,7 +691,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_PredictionResult predictions = (EinsteinVision_PredictionResult)client.getParser().readValueAs(EinsteinVision_PredictionResult.class);
             System.debug('Image has been predicted.');
-            System.debug('***predictions ' + predictions);
+            System.debug('+++ predictions ' + predictions);
             return predictions;
         }
         return null;
@@ -709,7 +709,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_PredictionResult predictBlob(EinsteinVision_Model model, Blob fileBlob, String sampleId) {
-        System.debug('@@@ predictBlob()');
+        System.debug('### predictBlob()');
         return predictBlob(model.modelId, fileBlob, sampleId);
     }
     
@@ -725,7 +725,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_PredictionResult predictBlob(String modelId, Blob fileBlob, String sampleId) {
-        System.debug('@@@ predictBlob()');
+        System.debug('### predictBlob()');
         System.debug('Starting predict call with model ' + modelId + ' for blob');
         EinsteinVision_HttpBodyPartPrediction parts = new EinsteinVision_HttpBodyPartPrediction(modelId, EncodingUtil.base64Encode(fileBlob), sampleId, EinsteinVision_HttpBodyPartPrediction.Types.BASE64);
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, PREDICT, parts.build());
@@ -740,7 +740,9 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_PredictionResult predictions = (EinsteinVision_PredictionResult)client.getParser().readValueAs(EinsteinVision_PredictionResult.class);
             System.debug('Image has been predicted.');
-            System.debug('***predictions ' + predictions);
+            for(EinsteinVision_Probability prediction :predictions.probabilities){
+                System.debug('+++ prediction ' + prediction);
+            }
             return predictions;
         }
         return null;
@@ -758,7 +760,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_PredictionResult predictUrl(EinsteinVision_Model model, String url, String sampleId) {
-        System.debug('@@@ predictUrl()');
+        System.debug('### predictUrl()');
         return predictUrl(model.modelId, url, sampleId);
     }
     
@@ -774,7 +776,7 @@ public class EinsteinVision_PredictionService {
 * @
 */
     public EinsteinVision_PredictionResult predictUrl(String modelId, String url, String sampleId) {
-        System.debug('@@@ predictUrl()');
+        System.debug('### predictUrl()');
         System.debug('Starting predict call with model ' + modelId + ' for url');
         EinsteinVision_HttpBodyPartPrediction parts = new EinsteinVision_HttpBodyPartPrediction(modelId, url, sampleId, EinsteinVision_HttpBodyPartPrediction.Types.URL);
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, PREDICT, parts.build());
@@ -789,7 +791,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_PredictionResult predictions = (EinsteinVision_PredictionResult)client.getParser().readValueAs(EinsteinVision_PredictionResult.class);
             System.debug('Image has been predicted.');
-            System.debug('***predictions ' + predictions);
+            System.debug('+++ predictions ' + predictions);
             return predictions;
         }
         return null;
@@ -801,7 +803,7 @@ public class EinsteinVision_PredictionService {
 * An array of all EinsteinVision_ApiUsage elements.
 */
     public EinsteinVision_ApiUsage[] getApiUsage() {
-        System.debug('@@@ getApiUsage()');
+        System.debug('### getApiUsage()');
         System.debug('Starting getApiUsage call');
         EinsteinVision_HttpClient client = new EinsteinVision_HttpClient(this, API_USAGE);
         System.debug('Target URL is ' + client.getUrl());
@@ -815,7 +817,7 @@ public class EinsteinVision_PredictionService {
         } else {
             EinsteinVision_ApiUsage[] apiUsage = (EinsteinVision_ApiUsage[])client.getParser().readValueAs(EinsteinVision_ApiUsage[].class);
             System.debug('API usage has been fetched.');
-            System.debug('***apiUsage ' + apiUsage);
+            System.debug('+++ apiUsage ' + apiUsage);
             return apiUsage;
         }
         return null;
@@ -855,7 +857,7 @@ public class EinsteinVision_PredictionService {
     }
     
     public static String getAccessToken() {
-        System.debug('@@@ getAccessToken()');
+        System.debug('### getAccessToken()');
         EinsteinAI_Settings__c settings = EinsteinAI_Settings__c.getOrgDefaults();
         ContentVersion base64Content = [SELECT Title, VersionData FROM ContentVersion where Title='einstein_platform' LIMIT 1];
         String keyContents = base64Content.VersionData.tostring();
@@ -875,7 +877,7 @@ public class EinsteinVision_PredictionService {
         if (!Test.isRunningTest()) {
             accessToken = EinsteinAI_JWTBearerFlow.getAccessToken(OAUTH2, jwt);
         }
-        System.debug('***accessToken ' + accessToken);
+        System.debug('+++ accessToken ' + accessToken);
         return accessToken;    
     }
     

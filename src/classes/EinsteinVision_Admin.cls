@@ -55,11 +55,33 @@ public class EinsteinVision_Admin {
                 EinsteinVision_Model model = models.get(0);
                 EinsteinVision_PredictionResult result = service.predictBlob(model.modelId, fileBlob, '');
                 EinsteinVision_Probability probability = result.probabilities.get(0);
-                
+
+                System.debug('*** dataset ' + dataset);
+                System.debug('*** models ' + models);
+                System.debug('*** model ' + model);
+                System.debug('*** model.modelId ' + model.modelId);
+                System.debug('*** result ' + result);
+                System.debug('*** result1 ' + result.probabilities[0]);
+                System.debug('*** result2 ' + result.probabilities[1]);
+                System.debug('*** result3 ' + result.probabilities[2]);
+                System.debug('*** result4 ' + result.probabilities[3]);
+                System.debug('*** result5 ' + result.probabilities[4]);
+                System.debug('*** probability ' + probability);
                 System.debug('*** probability.label ' + probability.label);
                 
                 Cat__c cat = [SELECT Id FROM Cat__C WHERE Id=:catId];
                 cat.Cat_Breed__c = probability.label;
+                cat.modelId__c = model.modelId;
+                cat.Probability01__c = result.probabilities[0].probability;
+                cat.Probability02__c = result.probabilities[1].probability;
+                cat.Probability03__c = result.probabilities[2].probability;
+                cat.Probability04__c = result.probabilities[3].probability;
+                cat.Probability05__c = result.probabilities[4].probability;
+                cat.label01__c = result.probabilities[0].label;
+                cat.label02__c = result.probabilities[1].label;
+                cat.label03__c = result.probabilities[2].label;
+                cat.label04__c = result.probabilities[3].label;
+                cat.label05__c = result.probabilities[4].label;
                 update cat;
                 Attachment[] attsOld = [SELECT Id FROM Attachment WHERE ParentId=:catId];
                 delete attsOld;
@@ -79,8 +101,9 @@ public class EinsteinVision_Admin {
         EinsteinVision_PredictionService service = new EinsteinVision_PredictionService();
         EinsteinVision_Dataset[] datasets = service.getDatasets();
         for (EinsteinVision_Dataset dataset : datasets) {
+            System.debug('*** dataset.labelSummary ' + dataset.labelSummary);
+            System.debug('*** dataset.labelSummary.labels ' + dataset.labelSummary.labels);
             if (dataset.Name.equals('Cats')) {
-                System.debug('*** dataset.labelSummary.labels ' + dataset.labelSummary.labels);
                 return dataset.labelSummary.labels;
             }
         }

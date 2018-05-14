@@ -31,10 +31,15 @@ public class Einstein_PredictionService {
     * An Enum of type Einstein_PredictionService.Types which defines the type of prediction (image, image-multi-model, sentiment or intent).
     */
     public Einstein_PredictionService(Einstein_PredictionService.Types typeEnum) {
+        System.debug('### Einstein_PredictionService(typeEnum)');
         this.bearerToken = getAccessToken();
         this.typeEnum = typeEnum;
         this.baseUrl = resolveBaseUrl();
         this.typeString = resolveType();
+        System.debug('+++ bearerToken ' + bearerToken);
+        System.debug('+++ typeEnum ' + typeEnum);
+        System.debug('+++ baseUrl ' + baseUrl);
+        System.debug('+++ typeString ' + typeString);
     }
 
     /**
@@ -292,6 +297,10 @@ public class Einstein_PredictionService {
     * An object of type Einstein_Example
     */
     public Einstein_Example createFeedbackImageExample(String name, String expectedLabel, String modelId, Blob fileBlob) {
+        System.debug('### createFeedbackImageExample()');
+        System.debug('+++ name ' + name);
+        System.debug('+++ expectedLabel ' + expectedLabel);
+        System.debug('+++ modelId ' + modelId);
         System.debug('Starting createFeedbackImageExample call from blob');
         Einstein_HttpBodyPartFeedbackExample parts = new Einstein_HttpBodyPartFeedbackExample(name, expectedLabel, modelId, EncodingUtil.base64Encode(fileBlob), Einstein_HttpBodyPartFeedbackExample.Types.BASE64);
         Einstein_HttpClient client = new Einstein_HttpClient(this, '/feedback', parts.build());
@@ -304,6 +313,7 @@ public class Einstein_PredictionService {
         System.debug('Call createFeedbackImageExample from blob has been executed.');
         if (!client.isError()) {
             Einstein_Example example = (Einstein_Example)client.getParser().readValueAs(Einstein_Example.class);
+            System.debug('+++ example ' + example);
             System.debug('New example with id ' + example.id + ' has been created.');
             return example;
         }
